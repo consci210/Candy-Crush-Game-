@@ -37,7 +37,7 @@ const App = () => {
             }
         }
     }
-
+  
     const checkForRowOfFour = () => {
         for (let i = 0; i < 64; i++) {
             const rowOfFour = [i, i + 1, i + 2, i + 3]
@@ -56,19 +56,34 @@ const App = () => {
     }
 
     const checkForColumnOfThree = () => {
-        for (let i = 0; i <= 47; i++) {
-            const columnOfThree = [i, i + width, i + width * 2]
-            const decidedColor = currentColorArrangement[i]
-            const isBlank = currentColorArrangement[i] === blank
+      for (let i = 0; i <= 47; i++) {
+          const columnOfThree = [i, i + width, i + width * 2]
+          const decidedColor = currentColorArrangement[i]
+          const isBlank = currentColorArrangement[i] === blank
 
-            if (columnOfThree.every(square => currentColorArrangement[square] === decidedColor && !isBlank)) {
-                setScoreDisplay((score) => score + 3)
-                columnOfThree.forEach(square => currentColorArrangement[square] = blank)
-                return true
-            }
+          if (columnOfThree.every(square => currentColorArrangement[square] === decidedColor && !isBlank)) {
+              setScoreDisplay((score) => score + 3)
+              columnOfThree.forEach(square => currentColorArrangement[square] = blank)
+              return true
+          }
+      }
+  }
+
+    const checkForPairOfThree = () => {
+      for (let i = 0; i < 46; i++) {
+        const pairOfThree = [i, i + 1, i + 2, i + width, i + width * 2, i + width * 2 + 1];
+        const decidedColor = currentColorArrangement[i];
+        const isBlank = currentColorArrangement[i] === blank;
+        
+        if (pairOfThree.every(square => currentColorArrangement[square] === decidedColor && !isBlank)) {
+          setScoreDisplay((score) => score + 6);
+          pairOfThree.forEach(square => currentColorArrangement[square] = blank);
+          return true;
         }
+      }
     }
-
+  
+  
     const checkForRowOfThree = () => {
         for (let i = 0; i < 64; i++) {
             const rowOfThree = [i, i + 1, i + 2]
@@ -160,17 +175,19 @@ const App = () => {
         const timer = setInterval(() => {
             checkForColumnOfFour()
             checkForRowOfFour()
+            checkForPairOfThree()
             checkForColumnOfThree()
             checkForRowOfThree()
             moveIntoSquareBelow()
             setCurrentColorArrangement([...currentColorArrangement])
         }, 100)
         return () => clearInterval(timer)
-    }, [checkForColumnOfFour, checkForRowOfFour, checkForColumnOfThree, checkForRowOfThree, moveIntoSquareBelow, currentColorArrangement])
+    }, [checkForColumnOfFour, checkForRowOfFour, checkForPairOfThree ,checkForColumnOfThree, checkForRowOfThree, moveIntoSquareBelow, currentColorArrangement])
 
 
     return (
         <div className="app">
+            <ScoreBoard score={scoreDisplay}/>
             <div className="game">
                 {currentColorArrangement.map((candyColor, index) => (
                     <img
@@ -188,7 +205,6 @@ const App = () => {
                     />
                 ))}
             </div>
-            <ScoreBoard score={scoreDisplay}/>
         </div>
     )
 }
