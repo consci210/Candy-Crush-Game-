@@ -1,6 +1,15 @@
 .app {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 30px;
+}
+
+.score-board {
+
+   width: 100%;
+  background-color: rgb(230, 8, 8);
 }
 
 .game {
