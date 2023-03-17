@@ -10,6 +10,7 @@ const Home = () => {
         <div className='main-body'>
             <div class="content">
                 <h1 className='banner'>Candy Crush</h1>
+                <h4>This Game is still </h4>
                 <div className='motto'>"Get ready to crush it! Join the sweetest puzzle adventure with Candy Crush today!"</div>
             </div>
            <Link to={"/game"}> <button className='start-game'>Start Game</button> </Link> 
