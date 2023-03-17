@@ -20,6 +20,8 @@
   margin-top: 50px;
 }
 
+/*  style for the game section */
+
 .game {
   width: 500px; /* Set the width of the game container to 500px */
   display: flex;
