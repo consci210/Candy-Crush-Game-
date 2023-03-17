@@ -125,24 +125,28 @@ const Game = () => {
         if (squareBeingDragged && squareBeingReplaced) {
           const squareBeingDraggedId = parseInt(squareBeingDragged.getAttribute('data-id'));
           const squareBeingReplacedId = parseInt(squareBeingReplaced.getAttribute('data-id'));
-          const validMoves = [squareBeingDraggedId - 1,squareBeingDraggedId - width, squareBeingDraggedId + 1,      squareBeingDraggedId + width    ];
+          const validMoves = [squareBeingDraggedId - 1,squareBeingDraggedId - width, squareBeingDraggedId + 1,squareBeingDraggedId + width ];
           const validMove = validMoves.includes(squareBeingReplacedId);
       
-          const isAColumnOfFour = checkForColumnOfFour();
-          const isARowOfFour = checkForRowOfFour();
-          const isAColumnOfThree = checkForColumnOfThree();
-          const isARowOfThree = checkForRowOfThree();
-          if( validMove) {
-            currentColorArrangement[squareBeingReplacedId] = squareBeingDragged.getAttribute('src');
-            currentColorArrangement[squareBeingDraggedId] = squareBeingReplaced.getAttribute('src');
-            if (squareBeingReplacedId &&
-                validMove &&
-                (isARowOfThree || isARowOfFour || isAColumnOfFour || isAColumnOfThree)) {
-              setSquareBeingDragged(null);
-              setSquareBeingReplaced(null);
-          }
          
-          } else {
+          if( validMove) {
+                currentColorArrangement[squareBeingReplacedId] = squareBeingDragged.getAttribute('src');
+                currentColorArrangement[squareBeingDraggedId] = squareBeingReplaced.getAttribute('src');
+
+                const isAColumnOfFour = checkForColumnOfFour();
+                const isARowOfFour = checkForRowOfFour();
+                const isAColumnOfThree = checkForColumnOfThree();
+                const isARowOfThree = checkForRowOfThree();
+
+            if (!(squareBeingReplacedId && (isARowOfThree || isARowOfFour || isAColumnOfFour || isAColumnOfThree))){
+                currentColorArrangement[squareBeingReplacedId] = squareBeingReplaced.getAttribute('src');
+                currentColorArrangement[squareBeingDraggedId] = squareBeingDragged.getAttribute('src');
+                setCurrentColorArrangement([...currentColorArrangement]);
+                setSquareBeingDragged(null);
+                setSquareBeingReplaced(null);
+          }
+
+        } else {
             currentColorArrangement[squareBeingReplacedId] = squareBeingReplaced.getAttribute('src');
             currentColorArrangement[squareBeingDraggedId] = squareBeingDragged.getAttribute('src');
             setCurrentColorArrangement([...currentColorArrangement]);
