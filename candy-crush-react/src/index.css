@@ -4,22 +4,42 @@
   justify-content: center;
   align-items: center;
   padding: 30px;
+
 }
 
 .score-board {
-
-   width: 100%;
-  background-color: rgb(230, 8, 8);
+  width: 100%;
+  font-size: 2em;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
+  border-radius: 10px;
+  margin: 3px;
 }
 
 .game {
-  width: 560px;
-  height: 560px;
+  width: 580px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
 }
 
 .game img {
-  width: 70px;
-  height: 70px;
+  width: calc(12.5% - 10px);
+  height: auto;
+  margin: 5px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
+  transition: transform 0.3s ease-in-out;
 }
+
+.game img:hover {
+  
+  box-shadow: 0px 3px 6px gold;
+  transform: scale(1.1);
+}
+
