@@ -82,11 +82,11 @@ body {
 .logo img {
   height: 30px;
   border-radius: 50%;
-  box-shadow: 0.125rem 0.125rem  #bac007;
+
 }
 
 /* Style the mute button */
-.mute {
+.icon {
   background-color: transparent;
   color: var(--primary-color);
   border: none;
@@ -94,7 +94,7 @@ body {
   cursor: pointer;
   margin-left: auto;
 }
-.mute img {
+.icon img {
   height: 20px;
   margin-right: 1rem;
   padding: 1rem;
@@ -196,3 +196,33 @@ body {
   width: 100%;
 }
 
+.about{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background-color: black;
+  padding: 1rem;
+  margin: 100px;
+  margin-bottom: 2rem;
+}
+
+.about-body {
+ 
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: black;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 50%;
+}

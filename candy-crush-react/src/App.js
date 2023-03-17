@@ -1,5 +1,6 @@
 import Game from "./Game"
 import Home from "./Home"
+import About from "./About";
 import logo from './images/logo.png';
 import candy_crush_audio from './audio/candy_crush_intro.ogg';
 import volume_off from './images/volume-xmark-solid.svg';
@@ -45,6 +46,7 @@ const App = () => {
         <Routes>
             <Route path="/" element={<Home/>} /> 
             <Route path="/game" element={ <Game/>} /> 
+            <Route path="/about" element = {<About/>} />
         </Routes>
         </>
     )
