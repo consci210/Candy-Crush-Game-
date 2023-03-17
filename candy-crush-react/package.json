@@ -1,5 +1,5 @@
 {
-  "homepage" : "http://consci210/Candy-Crush-Game-/candy-crush-react/",
+  "homepage": "http://consci210/Candy-Crush-Game-/candy-crush-react/",
   "name": "candy-crush-react",
   "version": "0.1.0",
   "private": true,
@@ -20,8 +20,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy" :"npm run build" ,
-    "deploy" : "gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b main -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
