@@ -1,24 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@700&display=swap');
+
 .app {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 30px;
-
 }
 
 .score-board {
+  background-color: #bac007;
   width: 100%;
   font-size: 2em;
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
   border-radius: 10px;
-  margin: 3px;
+  margin: 10px;
+  margin-top: 50px;
 }
 
 .game {
-  width: 580px;
+  width: 500px; /* Set the width of the game container to 500px */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -29,17 +32,167 @@
 }
 
 .game img {
-  width: calc(12.5% - 10px);
+  width: calc(12.5% - 10px); /* Adjust width to fit 8 candies per row */
   height: auto;
-  margin: 5px;
   border-radius: 10px;
   box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
   transition: transform 0.3s ease-in-out;
+  margin: 5px; /* Increase margin to match width adjustment */
 }
 
+
 .game img:hover {
-  
   box-shadow: 0px 3px 6px gold;
   transform: scale(1.1);
+}
+
+
+/* Set variables for colors */
+:root {
+  --primary-color: black ;
+  --secondary-color: yellow ;
+  --body-font: 'Roboto', sans-serif;
+}
+
+/* Style the body */
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: var(--body-font);
+  background-color: var(--primary-color);
+}
+
+/* Style the header */
+.header {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+}
+
+/* Style the logo */
+.logo img {
+  height: 30px;
+  border-radius: 50%;
+  box-shadow: 0.125rem 0.125rem  #bac007;
+}
+
+/* Style the mute button */
+.mute {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: auto;
+}
+.mute img {
+  height: 20px;
+  margin-right: 1rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+/* Style the main content */
+.main-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 5rem 1rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.content {
+  max-width: 800px;
+  text-align: center;
+}
+
+/* Style the banner */
+.banner {
+  font-size: 8rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  padding: 2rem;
+  font-family: 'Passion One', cursive;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px yellow;
+  animation-name: shadow-pulse;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shadow-pulse {
+  0% {
+    box-shadow: 0 0 10px yellow;
+  }
+  50% {
+    box-shadow: 0 0 20px yellow;
+  }
+  100% {
+    box-shadow: 0 0 10px yellow;
+  }
+}
+
+
+/* Style the motto */
+.motto {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--secondary-color);
+  text-shadow: 0 0 5px yellow;
+}
+
+/* Style the start game button */
+.start-game {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+  margin: 10px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.start-game:hover {
+  transform: scale(1.05);
+}
+
+/* Style the candy crush image */
+.candy-crush-image {
+  width: 400px;
+  margin: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 4.5rem;
+}
+
+/* Style the footer */
+.footer {
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 

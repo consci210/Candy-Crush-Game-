@@ -21,10 +21,50 @@ const candyColors = [
 
 const Game = () => {
 
+
+
+    const [timeLeft, setTimeLeft] = useState(30);
+    const [gameResult, setGameResult] = useState(null);
     const [currentColorArrangement, setCurrentColorArrangement] = useState([])
     const [squareBeingDragged, setSquareBeingDragged] = useState(null)
     const [squareBeingReplaced, setSquareBeingReplaced] = useState(null)
     const [scoreDisplay, setScoreDisplay] = useState(0)
+
+
+    
+    useEffect(() => {
+        if (timeLeft === 0) {
+
+        if (scoreDisplay >= 50) {
+        
+        setGameResult('You won!');
+
+        } else {
+        setGameResult('You lost!');
+        }
+        }
+        }, [timeLeft, scoreDisplay]);
+
+        useEffect(() => {
+        const interval = setInterval(() => {
+        if (timeLeft > 0) {
+        setTimeLeft(timeLeft - 1);
+        } else {
+        clearInterval(interval);
+        }
+        }, 1000);
+
+
+            return () => clearInterval(interval);
+        }, [timeLeft]);
+
+
+    const handlePlayAgainClick = () => {
+        setScoreDisplay(0) ;
+        setTimeLeft(30);
+        setGameResult(null);
+        };
+
 
     const checkForColumnOfFour = () => {
         for (let i = 0; i <= 39; i++) {
@@ -185,8 +225,13 @@ const Game = () => {
 
   return (
     <div className="app">
-            <ScoreBoard score={scoreDisplay}/>
-              
+            <ScoreBoard 
+            scoreDisplay={scoreDisplay}
+            timeLeft={timeLeft}
+            gameResult={gameResult}
+            handlePlayAgainClick = {handlePlayAgainClick}
+            />
+            
             <div className="game">
                 {currentColorArrangement.map((candyColor, index) => (
                     <img
