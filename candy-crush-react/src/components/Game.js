@@ -1,15 +1,16 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
-import ScoreBoard from './components/ScoreBoard'
-import blueCandy from './images/blue-candy.png'
-import greenCandy from './images/green-candy.png'
-import orangeCandy from './images/orange-candy.png'
-import purpleCandy from './images/purple-candy.png'
-import redCandy from './images/red-candy.png'
-import yellowCandy from './images/yellow-candy.png'
-import blank from './images/blank.png'
+import ScoreBoard from './ScoreBoard'
+import blueCandy from '../images/blue-candy.png'
+import greenCandy from '../images/green-candy.png'
+import orangeCandy from '../images/orange-candy.png'
+import purpleCandy from '../images/purple-candy.png'
+import redCandy from '../images/red-candy.png'
+import yellowCandy from '../images/yellow-candy.png'
+import blank from '../images/blank.png'
 
 const width = 8
+
 const candyColors = [
     blueCandy,
     orangeCandy,
@@ -31,40 +32,48 @@ const Game = () => {
     const [scoreDisplay, setScoreDisplay] = useState(0)
 
 
-    
+
+    // Checks for win when timer stops . 
     useEffect(() => {
+
         if (timeLeft === 0) {
 
-        if (scoreDisplay >= 50) {
-        
-        setGameResult('You won!');
+            if (scoreDisplay >= 50) {
+                    setGameResult('You won!');
 
-        } else {
-        setGameResult('You lost!');
-        }
-        }
-        }, [timeLeft, scoreDisplay]);
+            } else {
+                    setGameResult('You lost!');
+            }
+        }},  [timeLeft, scoreDisplay]);
 
-        useEffect(() => {
+    
+    // Countdown timer 
+    useEffect(() => {
         const interval = setInterval(() => {
+
         if (timeLeft > 0) {
-        setTimeLeft(timeLeft - 1);
+
+            setTimeLeft(timeLeft - 1);
+
         } else {
-        clearInterval(interval);
+            // if timer === 0 then it stops . To avoid negative time values 
+            clearInterval(interval);
         }
         }, 1000);
 
-
             return () => clearInterval(interval);
+
         }, [timeLeft]);
 
-
+    
+    // Resets score and timer 
     const handlePlayAgainClick = () => {
         setScoreDisplay(0) ;
         setTimeLeft(30);
         setGameResult(null);
         };
 
+    //Functions to check for valid matches 
 
     const checkForColumnOfFour = () => {
         for (let i = 0; i <= 39; i++) {
@@ -128,6 +137,8 @@ const Game = () => {
         }
     }
 
+    // moves squares on top to the blank spaces below them
+
     const moveIntoSquareBelow = () => {
         for (let i = 0; i <= 55; i++) {
             const firstRow = [0, 1, 2, 3, 4, 5, 6, 7]
@@ -144,6 +155,8 @@ const Game = () => {
             }
         }
     }
+
+    // handle drag events 
 
     const dragStart = (e) => {
         if (e.target && e.target.getAttribute('data-id')) {
@@ -196,6 +209,9 @@ const Game = () => {
         }
       };
       
+
+    // creates new board with random arrangement 
+
     const createBoard = () => {
         const randomColorArrangement = []
         for (let i = 0; i < width * width; i++) {
@@ -205,9 +221,13 @@ const Game = () => {
         setCurrentColorArrangement(randomColorArrangement)
     }
 
+    // since it shall happen on load time we apply useEffect 
+
     useEffect(() => {
         createBoard()
     }, [])
+
+    // calls the match checker functions every 0.1 second 
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -224,6 +244,7 @@ const Game = () => {
 
 
   return (
+
     <div className="app">
             <ScoreBoard 
             scoreDisplay={scoreDisplay}
