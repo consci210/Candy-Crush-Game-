@@ -23,7 +23,7 @@ const candyColors = [
 const Game = () => {
 
 
-
+     // initialize     
     const [timeLeft, setTimeLeft] = useState(30);
     const [gameResult, setGameResult] = useState(null);
     const [currentColorArrangement, setCurrentColorArrangement] = useState([])
