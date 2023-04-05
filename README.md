@@ -1,5 +1,7 @@
   # 🍭  Candy Crush Game 🎮
 
+[LIVE-DEMO](https://candy-crush-react21.netlify.app/)
+
 Indulge in the sweet and addictive world of candy crushing with my ReactJS implementation of the popular game.This game has helped me to hone my skills in using advanced JavaScript higher-order methods and elevated my ReactJS proficiency. With vibrant colors, seamless user experience, and challenging levels, my Candy Crush game is the perfect treat for casual and avid gamers alike. Satisfy your sweet tooth and sharpen your coding skills with my candy-crushing adventure! 🍬🍫🍭
 
  ## Technologies Used
